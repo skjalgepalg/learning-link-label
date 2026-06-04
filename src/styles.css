@@ -1,0 +1,16 @@
+
+/* 
+Should size the svg icon to 1rem, so it is the same size as the text. The svg icon should be placed before the text, and both should be wrapped in an anchor tag. For example:
+<a class="with-icon" href="http://frkfrontend.no" target="_blank" aria-label="Wowsuchlink">
+    <!-- nrk-home from core-icons -->
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"
+        d="M23 9.19459V6.92308L12 1 1 6.92308v2.27151l11-5.92308 11 5.92308zM5 11v10h14V11h2v12H3V11h2z" />
+    </svg>
+    Wow such link
+</a>
+*/
+a.with-icon > svg {
+    width: 1rem;
+    height: 1rem;
+}

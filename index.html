@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="no">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>link-label-test</title>
+  <link rel="stylesheet" href="src/styles.css" />
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none">
+    <!-- nrk-home from @nrk/core-icons https://github.com/nrkno/core-icons/blob/master/LICENSE.txt#L25 -->
+    <symbol id="nrk-home" viewBox="0 0 24 24">
+      <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"
+        d="M23 9.19459V6.92308L12 1 1 6.92308v2.27151l11-5.92308 11 5.92308zM5 11v10h14V11h2v12H3V11h2z"></path>
+    </symbol>
+  </svg>
+</head>
+
+<body>
+  <main>
+    <h1>Test av label og aria i lenke</h1>
+    <p>Hva blir egentlig lest opp i voiceover? </p>
+    <section>
+      <h2>Lenker med bare tekst</h2>
+      <ul>
+        <li>
+          <p>Lenketekst i voiceover: <em>Hjemmeside</em></p>
+          <a href="https://frkfrontend.no" target="_blank">
+            Hjemmeside
+          </a>
+        </li>
+        <li>
+          <p>Lenketekst overstyres av aria-label i voiceover: <em>Gå til hjemmeside</em></p>
+          <a href="https://frkfrontend.no" target="_blank" aria-label="Gå til hjemmeside">
+            Hjemmeside
+          </a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Lenker uten tekst <small>(ikke gjør dette)</small></h2>
+      <ul>
+        <li>
+          <p>Mangler lenketekst og aria-label, i voiceover: <em>Lenke, {url}</em></p>
+          <a href="https://frkfrontend.no" target="_blank"
+            style="width: 1rem; height: 1rem; display: inline-block; border: 1px solid hotpink;"></a>
+        </li>
+        <li>
+          <p>Mangler lenketekst men har aria-label i voiceover: <em>Gå til hjemmeside</em></p>
+          <a href="https://frkfrontend.no" target="_blank" aria-label="Gå til hjemmeside"
+            style="width: 1rem; height: 1rem; display: inline-block; border: 1px solid hotpink;"></a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Lenker med bare ikon</h2>
+      <ul>
+        <li>
+          <p>Kun ikon i voiceover: <em>Lenke, image, {url}</em></p>
+          <a class="with-icon" href="https://frkfrontend.no" target="_blank">
+            <svg viewBox="0 0 24 24">
+              <use href="#nrk-home" />
+            </svg>
+          </a>
+        </li>
+        <li>
+          <p>Kun ikon (aria-hidden) i voiceover: <em>Lenke, {url}</em></p>
+          <a class="with-icon" href="https://frkfrontend.no" target="_blank">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <use href="#nrk-home" />
+            </svg>
+          </a>
+        </li>
+        <li>
+          <p>Kun ikon (role="presentation") i voiceover: <em>Lenke, {url}</em></p>
+          <a class="with-icon" href="https://frkfrontend.no" target="_blank">
+            <svg viewBox="0 0 24 24" role="presentation">
+              <use href="#nrk-home" />
+            </svg>
+          </a>
+        </li>
+        <li>
+          <p>Kun ikon, med aria-label i voiceover: <em>Lenke, image, Gå til hjemmeside</em></p>
+          <a class="with-icon" href="https://frkfrontend.no" target="_blank" aria-label="Gå til hjemmeside">
+            <svg viewBox="0 0 24 24">
+              <use href="#nrk-home" />
+            </svg>
+          </a>
+        </li>
+        <li>
+          <p>Kun ikon (aria-hidden), med aria-label i voiceover: <em>Lenke, Gå til hjemmeside</em></p>
+          <a class="with-icon" href="https://frkfrontend.no" target="_blank" aria-label="Gå til hjemmeside">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <use href="#nrk-home" />
+            </svg>
+          </a>
+        </li>
+        <li>
+          <p>Kun ikon (aria-hidden), med title i voiceover: <em>Lenke, Gå til hjemmeside (title)</em></p>
+          <a class="with-icon" href="https://frkfrontend.no" target="_blank" title="Gå til hjemmeside (title)">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <use href="#nrk-home" />
+            </svg>
+          </a>
+        </li>
+        <li>
+          <p>Kun ikon (aria-hidden), med aria-label og title i voiceover: <em>Lenke, Gå til hjemmeside, Gå til
+              hjemmeside (title)</em></p>
+          <a class="with-icon" href="https://frkfrontend.no" target="_blank" aria-label="Gå til hjemmeside"
+            title="Gå til hjemmeside (title)">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <use href="#nrk-home" />
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Lenker med ikon og tekst</h2>
+      <ul>
+        <li>
+          <p>ikon, tekst i voiceover: <em>Lenke, Hjemmeside</em></p>
+          <a class="with-icon" href="https://frkfrontend.no" target="_blank">
+            <svg viewBox="0 0 24 24">
+              <use href="#nrk-home" />
+            </svg>
+            Hjemmeside
+          </a>
+        </li>
+        <li>
+          <p>ikon (aria-hidden), tekst i voiceover: <em>Lenke, Hjemmeside</em></p>
+          <a class="with-icon" href="https://frkfrontend.no" target="_blank">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <use href="#nrk-home" />
+            </svg>
+            Hjemmeside
+          </a>
+        </li>
+        <li>
+          <p>ikon (aria-hidden), tekst med aria-label i voiceover: <em>Lenke, Gå til hjemmeside</em></p>
+          <a class="with-icon" href="https://frkfrontend.no" target="_blank" aria-label="Gå til hjemmeside">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <use href="#nrk-home" />
+            </svg>
+            Hjemmeside
+          </a>
+        </li>
+        <li>
+          <p>ikon (aria-hidden), tekst med title i voiceover: <em>Lenke, Hjemmeside, Gå til hjemmeside (title)</em></p>
+          <a class="with-icon" href="https://frkfrontend.no" target="_blank" title="Gå til hjemmeside (title)">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <use href="#nrk-home" />
+            </svg>
+            Hjemmeside
+          </a>
+        </li>
+      </ul>
+    </section>
+  </main>
+  <hr>
+</body>
+
+</html>
